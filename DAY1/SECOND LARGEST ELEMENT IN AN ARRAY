@@ -1,0 +1,14 @@
+#O(nlogn)
+def second_largest(arr):
+    unique = sorted(set(arr), reverse=True)
+    return unique[1] if len(unique) >= 2 else None
+
+
+#O(n)
+
+def second_largest(arr):
+    unique = set(arr)
+    if len(unique) < 2:
+        return None
+    unique.remove(max(unique))
+    return max(unique)
