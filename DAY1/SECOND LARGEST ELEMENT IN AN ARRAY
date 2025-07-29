@@ -12,6 +12,21 @@ def second_largest(arr):
     unique.remove(max(unique))
     return max(unique)
 
+#without inbuilt 
+def second_largest(arr):
+    if len(arr) < 2:
+        return -1
+    first = second = float('-inf')#negative infinity
+    for num in arr:
+        if num > first:
+            second =first 
+            first=num
+        elif num>second and num!=first:
+            second= num
+    if second == float('-inf'):
+        return -1
+    else:
+        return second
 
 def second_largest(arr):
     
