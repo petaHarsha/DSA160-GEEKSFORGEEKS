@@ -1,0 +1,19 @@
+from math import gcd
+
+def rotate_left(arr, d):
+    n = len(arr)
+    d %= n  # Handle d > n
+    g = gcd(d, n)
+
+    for i in range(g):
+        temp = arr[i]
+        j = i
+
+        while True:
+            k = (j + d) % n
+            if k == i:
+                break
+            arr[j] = arr[k]
+            j = k
+
+        arr[j] = temp
