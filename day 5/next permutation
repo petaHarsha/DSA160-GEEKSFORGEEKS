@@ -21,3 +21,35 @@ class Solution:
             arr[left], arr[right] = arr[right], arr[left]
             left += 1
             right -= 1
+
+
+
+
+class Solution:
+    def nextPermutation(self, nums):
+        def swap(i, j):
+            nums[i], nums[j] = nums[j], nums[i]
+
+        def reverse(start):
+            end = len(nums) - 1
+            while start < end:
+                swap(start, end)
+                start += 1
+                end -= 1
+
+        n = len(nums)
+        pivot = n - 2
+
+        # Step 1: Find the first index where nums[i] < nums[i+1]
+        while pivot >= 0 and nums[pivot] >= nums[pivot + 1]:
+            pivot -= 1
+
+        if pivot >= 0:
+            # Step 2: Find the first number larger than nums[pivot] from the end
+            successor = n - 1
+            while nums[successor] <= nums[pivot]:
+                successor -= 1
+            swap(pivot, successor)
+
+        # Step 3: Reverse the part after pivot
+        reverse(pivot + 1)
