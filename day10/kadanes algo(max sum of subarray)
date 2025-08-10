@@ -1,0 +1,17 @@
+class Solution:
+    def maxSubarraySum(self, arr):
+        max_sum = arr[0]      # Best sum found so far
+        current_sum = arr[0]  # Current subarray sum
+
+        for i in range(1, len(arr)):
+            # Decide whether to start new subarray or extend current one
+            if current_sum + arr[i] > arr[i]:
+                current_sum = current_sum + arr[i]
+            else:
+                current_sum = arr[i]
+
+            # Update max_sum if needed
+            if current_sum > max_sum:
+                max_sum = current_sum
+
+        return max_sum
