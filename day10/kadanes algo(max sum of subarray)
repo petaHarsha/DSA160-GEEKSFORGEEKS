@@ -10,6 +10,7 @@ class Solution:
             else:
                 current_sum = arr[i]
 
+
             # Update max_sum if needed
             if current_sum > max_sum:
                 max_sum = current_sum
